@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ShowArticles from "./ShowArticles";
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom/cjs/react-router-dom.min";
+import { Switch } from "react-router-dom";
+import AddArticle from "./AddArticle";
+import EditArticle from "./EditArticle";
+import UserRegistration from "./UserRegistration";
+import UserLogin from "./UserLogin";
+import Navbar from "./Navbar";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div style={{ width: "1000px", maxWidth: "100%", margin: "0px auto" }}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/" exact>
+              <ShowArticles />
+            </Route>
+            <Route path="/add">
+              <AddArticle />
+            </Route>
+            <Route path="/edit">
+              <EditArticle />
+            </Route>
+            <Route path="/user/register">
+              <UserRegistration />
+            </Route>
+            <Route path="/login">
+              <UserLogin />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
